@@ -1,7 +1,7 @@
 layout: sidebar
 style: dark
 encoding: UTF-8
-url: "https://jiaweihou.research"
+# url: "https://jiaweihou.research"
 
 plugins:
   - jekyll-octicons
