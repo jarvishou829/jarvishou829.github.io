@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="LOP-Field: Brain-inspired Layout-Object-Position Fields for Robotic Scene Understanding">
-    <meta name="keywords" content="Robotics, Spatial Cognition, Hierarchical Representations, Foundation Models, Neural Scene Representation">
+    <meta name="description" content="TaMMa: Target-driven Multi-subscene Mobile Manipulation">
+    <meta name="keywords" content="Robotics, Target-driven Manipulation, Gaussian Splatting, Depth Completion, Scene Inpainting">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>LOP-Field: Brain-inspired Layout-Object-Position Fields for Robotic Scene Understanding</title>
+    <title>TaMMa: Target-driven Multi-subscene Mobile Manipulation</title>
 
     <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
@@ -58,7 +58,7 @@
                 <div class="columns is-centered">
                     <div class="column has-text-centered">
                         <div class="column is-full_width">
-                            <h1 class="title is-1 publication-title"><p>LOP-Field: Brain-inspired</p> <p>Layout-Object-Position Fields</p> <p>for Robotic Scene Understanding</p></h1>
+                            <h1 class="title is-1 publication-title"><p>TaMMa: Target-driven Multi-subscene Mobile Manipulation</p></h1>
                         </div>
 
                         <!-- <div class="column is-full_width">
@@ -69,11 +69,15 @@
                             <span class="author-block">
                                 <a href="http://jarvishou829.github.io/">Jiawei Hou</a>,</span>
                             <span class="author-block">
-                                <a href="">Wenhao Guan</a>,</span>
+                                <a href="">Tianyu Wang</a>,</span>
+                            <span class="author-block">
+                                <a href="">Tongying Pan</a>,</span>
+                            <span class="author-block">
+                                <a href="">Shouyan Wang</a>,</span>
                             <span class="author-block">
                                 <a href="">Xiangyang Xue</a>,</span>
                             <span class="author-block">
-                                <a href="">Taiping Zeng</a></span>
+                                <a href="">Yanwei Fu</a></span>
                         </div>
 
                         <div class="is-size-3 publication-authors">
@@ -94,7 +98,7 @@
                                     </a>
                                 </span>
                                 <span class="link-block">
-                                    <a class="external-link button is-normal is-rounded is-dark" href="https://arxiv.org/abs/2406.05985">
+                                    <a class="external-link button is-normal is-rounded is-dark" href="">
                                         <span class="icon">
                                             <i class="ai ai-arxiv"></i>
                                         </span>
@@ -113,7 +117,7 @@
 
                                 <!-- Github Link. -->
                                 <span class="link-block">
-                                    <a href="https://jarvishou829.github.io/LOP-Field/" class="external-link button is-normal is-rounded is-dark">
+                                    <a href="" class="external-link button is-normal is-rounded is-dark">
                                         <span class="icon">
                                             <i class="fab fa-github"></i>
                                         </span>
@@ -134,7 +138,7 @@
             <div class="hero-body">
                 <div align="center"><img src="./resources/images/idea.png" width="100%" /></div>
                 <h2 class=" subtitle has-text-centered" style="padding-top: 10px">
-                    Dividing the scene information into layout, object, and position, and modeling them explicitly, layout-object-position association enables robots to address relative problems and realize a more comprehensive spatial cognition.
+                    Our proposed multi-subscene mobile manipulation approach. Coarse scene prior and refined pose estimation empower the mobile base movement and robotic arm manipulation effectively and efficiently on compositional challenging tasks such as pouring, stacking, and tidy-up.
                 </h2>
             </div>
         </div>
@@ -149,15 +153,15 @@
                     <h2 class="title is-3">Abstract</h2>
                     <div class="content has-text-justified">
                         <p>
-                            Spatial cognition empowers animals with remarkably efficient navigation abilities, largely depending on the scene-level understanding of spatial environments. Recently, it has been found that a neural population in the postrhinal cortex of rat brains is more strongly tuned to the spatial layout rather than objects in a scene.
+                            For everyday service robotics, the ability to navigate back and forth based on tasks in multi-subscene environments and perform delicate manipulations is crucial and highly practical. While existing robotics primarily focus on complex tasks within a single scene or simple tasks across scalable scenes individually, robots consisting of a mobile base with a robotic arm face the challenge of efficiently representing multiple subscenes, coordinating the collaboration between the mobile base and the robotic arm, and managing delicate tasks in scalable environments.
                         </p>
                             
                         <p>
-                            Inspired by the representations of spatial layout in local scenes to encode different regions separately, we proposed <span style="font-size: larger; color: cornflowerblue; ">LOP-Field</span> that realizes the <b>Layout-Object-Position(LOP) association</b> to model the hierarchical representations for robotic scene understanding. Powered by foundation models and implicit scene representation, a neural field is implemented as a scene memory for robots, storing a queryable representation of scenes with position-wise, object-wise, and layout-wise information.
+                            To address this issue, we propose Target-driven Multi-subscene Mobile Manipulation (\textit{TaMMa}), which efficiently handles mobile base movement and fine-grained manipulation across subscenes. Specifically, we obtain a reliable 3D Gaussian initialization of the whole scene using a sparse 3D point cloud with encoded semantics. Through querying the coarse Gaussians, we acquire the approximate pose of the target, navigate the mobile base to approach it, and reduce the scope of precise target pose estimation to the corresponding subscene. Optimizing while moving, we employ diffusion-based depth completion to optimize fine-grained Gaussians and estimate the target's refined pose. For target-driven manipulation, we adopt Gaussians inpainting to obtain precise poses for the origin and destination of the operation in a \textit{think before you do it} manner, enabling fine-grained manipulation. 
                         </p>
                                 
                         <p>
-                            To validate the built LOP association, the model is tested to infer region information from 3D positions with quantitative metrics, achieving an average accuracy of more than 88\%. It is also shown that the proposed method using region information can achieve improved object and view localization results with text and RGB input compared to state-of-the-art localization methods.
+                            We conduct various experiments on a real robotic to demonstrate our method in effectively and efficiently achieving precise operation tasks across multiple tabletop subscenes.
                         </p>
                     </div>
                 </div>
@@ -195,9 +199,7 @@
                     <img src="./resources/images/method.png"/>
                     <div class="content has-text-justified" style="padding-top: 15px">
                         <p>
-                            Pipeline of the target embedding processing and neural implicit rendering during training.
-                            Above is the ground truth generation of layout-object-position vision-language and semantic embeddings for weakly-supervising.
-                            Below is the neural implicit network mapping 3D positions to target feature space. A contrastive loss is optimized against each other.
+                            RGB-D sequences with camera poses are used for point cloud unprojection, which initializes the Gaussians. Grounded-Light-HQ-SAM is employed to encode semantics for Gaussians and depth completion. The coarse Gaussians provide a scene prior to mobile base navigation; further, a fine-grained manipulation target pose is optimized from completed and inpainted Gaussians with an object mask.
                         </p>
                     </div>
 
@@ -207,7 +209,7 @@
         </div>
     </section>
 
-    <section class="section">
+    <!-- <section class="section">
         <div class="container">
             <div class="columns is-centered" style="margin-top: 15px">
                 <div class="column is-full-width">
@@ -222,7 +224,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <section class="section">
         <div class="container is-max-desktop">
@@ -230,9 +232,9 @@
             <!-- Overview. -->
             <div class="columns is-centered" style="margin-top: 15px">
                 <div class="column is-full-width">
-                    <h2 class="title is-3">Text Query Localization Results on Datasets</h2>
+                    <h2 class="title is-3">Challenging tasks supported</h2>
                     <div align="center">
-                        <img src="./resources/images/exp3.png" width="100%"/>
+                        <img src="./resources/images/tasks.png" width="100%"/>
                     </div>
 
 
@@ -242,7 +244,7 @@
         </div>
     </section>
 
-    <section class="section">
+    <!-- <section class="section">
         <div class="container is-max-desktop">
 
             <!-- Overview. -->
@@ -258,9 +260,9 @@
             </div>
 
         </div>
-    </section>
+    </section> -->
 
-    <section class="section">
+    <!-- <section class="section">
         <div class="container is-max-desktop">
 
             <!-- Overview. -->
@@ -282,16 +284,16 @@
             </div>
 
         </div>
-    </section>
+    </section> -->
 
 
 <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>
-        @inproceedings{hou2024lop-field,
-            title={LOP-Field: Brain-inspired Layout-Object-Position Fields for Robotic Scene Understanding},
-            author={Hou, Jiawei and Guan, Wenhao and Xue, Xiangyang and Zeng, Taiping},
+        @inproceedings{hou2024tamma,
+            title={TaMMa: Target-driven Multi-subscene Mobile Manipulation},
+            author={Hou, Jiawei and Wang, Tianyu and Wang, Shouyan and Xue, Xiangyang and Fu, Yanwei},
             booktitle = {arXiv},
             year = {2024},
         }
