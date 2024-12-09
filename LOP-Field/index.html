@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="LOP-Field: Brain-inspired Layout-Object-Position Fields for Robotic Scene Understanding">
+    <meta name="description" content="Topo-Field: Topometric mapping with Brain-inspired Hierarchical Layout-Object-Position Fields">
     <meta name="keywords" content="Robotics, Spatial Cognition, Hierarchical Representations, Foundation Models, Neural Scene Representation">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>LOP-Field: Brain-inspired Layout-Object-Position Fields for Robotic Scene Understanding</title>
+    <title>Topo-Field: Topometric mapping with Brain-inspired Hierarchical Layout-Object-Position Fields</title>
 
     <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
@@ -58,7 +58,7 @@
                 <div class="columns is-centered">
                     <div class="column has-text-centered">
                         <div class="column is-full_width">
-                            <h1 class="title is-1 publication-title"><p>LOP-Field: Brain-inspired</p> <p>Layout-Object-Position Fields</p> <p>for Robotic Scene Understanding</p></h1>
+                            <h1 class="title is-1 publication-title"><p>Topo-Field: Topometric mapping with </p> <p>Brain-inspired Hierarchical Layout-Object-Position Fields</p></h1>
                         </div>
 
                         <!-- <div class="column is-full_width">
@@ -71,6 +71,10 @@
                             <span class="author-block">
                                 <a href="">Wenhao Guan</a>,</span>
                             <span class="author-block">
+                                <a href="">Longfei Liang</a>,</span>
+                            <span class="author-block">
+                                <a href="">Jianfeng Feng</a>,</span>
+                            <span class="author-block">
                                 <a href="">Xiangyang Xue</a>,</span>
                             <span class="author-block">
                                 <a href="">Taiping Zeng</a></span>
@@ -78,6 +82,7 @@
 
                         <div class="is-size-3 publication-authors">
                             <span class="author-block">Fudan University</span>
+                            <span class="author-block">NeuHelium Tech. Co., Ltd.</span>
                         </div>
                         
                         <div class="column has-text-centered">
@@ -94,7 +99,7 @@
                                     </a>
                                 </span>
                                 <span class="link-block">
-                                    <a class="external-link button is-normal is-rounded is-dark" href="https://arxiv.org/abs/2406.05985">
+                                    <a class="external-link button is-normal is-rounded is-dark" href="">
                                         <span class="icon">
                                             <i class="ai ai-arxiv"></i>
                                         </span>
@@ -113,7 +118,7 @@
 
                                 <!-- Github Link. -->
                                 <span class="link-block">
-                                    <a href="https://jarvishou829.github.io/LOP-Field/" class="external-link button is-normal is-rounded is-dark">
+                                    <a href="" class="external-link button is-normal is-rounded is-dark">
                                         <span class="icon">
                                             <i class="fab fa-github"></i>
                                         </span>
@@ -134,7 +139,7 @@
             <div class="hero-body">
                 <div align="center"><img src="./resources/images/idea.png" width="100%" /></div>
                 <h2 class=" subtitle has-text-centered" style="padding-top: 10px">
-                    Dividing the scene information into layout, object, and position, and modeling them explicitly, layout-object-position association enables robots to address relative problems and realize a more comprehensive spatial cognition.
+                    Hierarchically dividing scene information into layout, object, and position to model them explicitly, layout-object-position associated knowledge enables robots with a topometric map representing the scene and planning navigable path to realize a more comprehensive spatial cognition.
                 </h2>
             </div>
         </div>
@@ -149,15 +154,15 @@
                     <h2 class="title is-3">Abstract</h2>
                     <div class="content has-text-justified">
                         <p>
-                            Spatial cognition empowers animals with remarkably efficient navigation abilities, largely depending on the scene-level understanding of spatial environments. Recently, it has been found that a neural population in the postrhinal cortex of rat brains is more strongly tuned to the spatial layout rather than objects in a scene.
+                            Mobile robots require comprehensive scene understanding to operate effectively in diverse environments, enriched with contextual information such as layouts, objects, and their relationships.
                         </p>
                             
                         <p>
-                            Inspired by the representations of spatial layout in local scenes to encode different regions separately, we proposed <span style="font-size: larger; color: cornflowerblue; ">LOP-Field</span> that realizes the <b>Layout-Object-Position(LOP) association</b> to model the hierarchical representations for robotic scene understanding. Powered by foundation models and implicit scene representation, a neural field is implemented as a scene memory for robots, storing a queryable representation of scenes with position-wise, object-wise, and layout-wise information.
+                            Inspired by a population code in the postrhinal cortex (POR) strongly tuned to spatial layouts over scene content rapidly forming a high-level cognitive map, this work introduces Topo-Field, a framework that integrates Layout-Object-Position (LOP) associations into a neural field and constructs a topometric map from this learned representation.
                         </p>
                                 
                         <p>
-                            To validate the built LOP association, the model is tested to infer region information from 3D positions with quantitative metrics, achieving an average accuracy of more than 88\%. It is also shown that the proposed method using region information can achieve improved object and view localization results with text and RGB input compared to state-of-the-art localization methods.
+                            LOP associations are modeled by explicitly encoding object and layout information, while a Large Foundation Model (LFM) technique allows for efficient training without extensive annotations. The topometric map is then constructed by querying the learned neural representation, offering both semantic richness and computational efficiency.
                         </p>
                     </div>
                 </div>
@@ -195,9 +200,10 @@
                     <img src="./resources/images/method.png"/>
                     <div class="content has-text-justified" style="padding-top: 15px">
                         <p>
-                            Pipeline of the target embedding processing and neural implicit rendering during training.
-                            Above is the ground truth generation of layout-object-position vision-language and semantic embeddings for weakly-supervising.
-                            Below is the neural implicit network mapping 3D positions to target feature space. A contrastive loss is optimized against each other.
+                            Pipeline of the Topo-Field.
+                            (a) The ground truth generation of layout-object-position vision-language and semantic embeddings for weakly-supervising.
+                            (b) The neural implicit network mapping 3D positions to target feature space. A contrastive loss is optimized against each other.
+                            (c) Topometric mapping process with trained neural field.
                         </p>
                     </div>
 
@@ -207,7 +213,7 @@
         </div>
     </section>
 
-    <section class="section">
+    <!-- <section class="section">
         <div class="container">
             <div class="columns is-centered" style="margin-top: 15px">
                 <div class="column is-full-width">
@@ -222,7 +228,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <section class="section">
         <div class="container is-max-desktop">
@@ -232,7 +238,7 @@
                 <div class="column is-full-width">
                     <h2 class="title is-3">Text Query Localization Results on Datasets</h2>
                     <div align="center">
-                        <img src="./resources/images/exp3.png" width="100%"/>
+                        <img src="./resources/images/res1.png" width="100%"/>
                     </div>
 
 
@@ -250,7 +256,25 @@
                 <div class="column is-full-width">
                     <h2 class="title is-3">Image Query Localization Results on Datasets</h2>
                     <div align="center">
-                        <img src="./resources/images/exp4.png" width="100%"/>
+                        <img src="./resources/images/res2.png" width="100%"/>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+
+            <!-- Overview. -->
+            <div class="columns is-centered" style="margin-top: 15px">
+                <div class="column is-full-width">
+                    <h2 class="title is-3">The Constructed Topometric Map</h2>
+                    <div align="center">
+                        <img src="./resources/images/res3.png" width="100%"/>
                     </div>
 
 
@@ -268,13 +292,13 @@
                 <div class="column is-full-width">
                     <h2 class="title is-3">More Results on Datasets</h2>
                     <div align="center">
-                        <img src="./resources/images/a_scene1.png"/>
-                        <img src="./resources/images/a_scene2.png"/>
-                        <img src="./resources/images/a_scene4.png"/>
-                        <img src="./resources/images/scene_1.png"/>
-                        <img src="./resources/images/scene_2.png"/>
-                        <img src="./resources/images/scene_3.png"/>
-                        <img src="./resources/images/scene_4.png"/>
+                        <img src="./resources/images/mres1.png"/>
+                        <img src="./resources/images/mres2.png"/>
+                        <img src="./resources/images/mres3.png"/>
+                        <img src="./resources/images/mres4.png"/>
+                        <img src="./resources/images/mres5.png"/>
+                        <img src="./resources/images/mres6.png"/>
+                        <img src="./resources/images/mres7.png"/>
                     </div>
 
 
@@ -289,9 +313,9 @@
     <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>
-        @inproceedings{hou2024lop-field,
-            title={LOP-Field: Brain-inspired Layout-Object-Position Fields for Robotic Scene Understanding},
-            author={Hou, Jiawei and Guan, Wenhao and Xue, Xiangyang and Zeng, Taiping},
+        @inproceedings{hou2024Topo-field,
+            title={Topo-Field: Topometric mapping with Brain-inspired Hierarchical Layout-Object-Position Fields},
+            author={Hou, Jiawei and Guan, Wenhao and Liang, Longfei and Feng, Jianfeng and Xue, Xiangyang and Zeng, Taiping},
             booktitle = {arXiv},
             year = {2024},
         }
@@ -314,7 +338,7 @@
                 <a class="icon-link" href="./resources/images/preprint.pdf">
                     <i class="fas fa-file-pdf"></i>
                 </a>
-                <a class="icon-link" href="https://github.com/jarvishou829/LOP-Field" class="external-link" disabled>
+                <a class="icon-link" href="" class="external-link" disabled>
                     <i class="fab fa-github"></i>
                 </a>
             </div>
